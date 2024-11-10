@@ -46,11 +46,11 @@ namespace OPP_Labb_3
             while (true)
             {
 
-                int selectedMenueItem = menu.Show();
+                int selectedMenuItem = menu.Show();
                 int radius;
                 int width;
                 int height;
-                switch (selectedMenueItem)
+                switch (selectedMenuItem)
                 {
                     case 0:
                         while (!int.TryParse(Helpers.Ask("What is the radius on the circle"), out radius) || radius <= 0)
