@@ -42,28 +42,17 @@ public class MenuDisplay(Item[] options)
         Console.WriteLine("Press arrow left and right to navigate. Select with enter");
         (int Left, int Top) = Console.GetCursorPosition();
 
+        Console.BackgroundColor = ConsoleColor.DarkBlue;
+        Console.CursorVisible = false;
         while (!isSelected)
         {
 
             string menuBar = "";
             for (int i = 0; i < Options.Length; i++)
             {
-                Console.ResetColor();
                 var Option = Options[i].Name;
-                if (SelectedOption == i)
-                {
-                    menuBar += "\u001b[32m" + $" {Option} " + "\u001b[0m ";
-                }
-                else
-                {
-                    menuBar += $" {Option} ";
-                }
+                menuBar += SelectedOption == i ? $" \u001b[34;47m{Option}\u001b[0m " : $" {Option} ";
             }
-            // for (int i = 0; i < Options.Length; i++)
-            // {
-            //     var Option = Options[i].Name;
-            //     menuBar += SelectedOption == i ? $" \u001b[32m{Option}\u001b[0m " : $" {Option} ";
-            // }
 
             Console.SetCursorPosition(Left, Top);
             Console.WriteLine(menuBar.Trim());
@@ -75,13 +64,14 @@ public class MenuDisplay(Item[] options)
                     SelectedOption = SelectedOption <= 0 ? Options.Length - 1 : SelectedOption - 1;
                     break;
                 case ConsoleKey.RightArrow:
-                    SelectedOption = SelectedOption < Options.Length - 1 ? SelectedOption = SelectedOption + 1 : SelectedOption = 0;
+                    SelectedOption = SelectedOption < Options.Length - 1 ? SelectedOption += 1 : SelectedOption = 0;
                     break;
                 case ConsoleKey.Enter:
                     isSelected = true;
                     break;
             }
         }
+        Console.CursorVisible = true;
         return SelectedOption;
     }
 }
