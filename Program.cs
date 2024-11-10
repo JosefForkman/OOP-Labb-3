@@ -1,9 +1,13 @@
-﻿namespace OPP_Labb_3
+﻿using OPP_Labb_3.Menu;
+
+namespace OPP_Labb_3
 {
     class Program
     {
         static void Main(string[] args)
         {
+            // Console.BackgroundColor = ConsoleColor.DarkBlue;
+            // Console.ForegroundColor = ConsoleColor.White;
             /* Polymorfism börjar använda här med att alla former har 
                ärver typen "Geometry". Det ser till att alla former 
                har samma metoder och inga specifika metoder eller 
@@ -31,7 +35,12 @@
             //     Console.WriteLine($"Circumference of {geometry.GetType()}: {geometry.Circumference()}");
             //     Console.WriteLine("____________");
             // }
-            var menu = new Menu(["circle", "square", "rectangle", "triangel", "Exit"]);
+            var circleOption = new Item("circle", []);
+            var squareOption = new Item("square", []);
+            var rectangleOption = new Item("rectangle", []);
+            var triangelOption = new Item("triangel", []);
+            var exitOption = new Item("Exit", []);
+            var menu = new MenuDisplay([circleOption, squareOption, rectangleOption, triangelOption, exitOption]);
 
             Console.Clear();
             while (true)
