@@ -33,9 +33,9 @@
             // }
             var menu = new Menu(["circle", "square", "rectangle", "triangel", "Exit"]);
 
+            Console.Clear();
             while (true)
             {
-                Console.Clear();
 
                 int selectedMenueItem = menu.Show();
                 int radius;
@@ -67,9 +67,9 @@
                         {
                             Console.WriteLine("Width need to be a number and more then 0");
                         }
-                        while (!int.TryParse(Helpers.Ask("What is the height on the rectangle"), out height) || height <= 0)
+                        while (!int.TryParse(Helpers.Ask("What is the height on the rectangle"), out height) || height == width || height <= 0)
                         {
-                            Console.WriteLine("Width need to be a number and more then 0");
+                            Console.WriteLine("Height need to be a number, more then 0 and not the same as width");
                         }
 
                         Geometry rectangle = new Rectangle(height, width);
